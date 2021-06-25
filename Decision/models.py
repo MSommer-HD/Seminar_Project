@@ -15,7 +15,7 @@ import numpy as np
 author = 'Moritz Sommerlad'
 
 doc = """
-This is the first out of three experiments for the Seminar on Experimental Economics in the WS 2020 at the AWI Heidelberg
+
 """
 
 
