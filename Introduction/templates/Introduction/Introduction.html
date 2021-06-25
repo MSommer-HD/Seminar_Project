@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% block title %}
+    Introduction
+{% endblock %}
+
+{% block content %}
+<div id="main">
+    <p>
+      <br>
+
+
+        Thank you for accepting the task.<br><br>
+
+        If you read these rules carefully and choose wisely, you can earn a <b>bonus of up to US$ 3.00.</b><br>
+        The task consists of a game that involves other m-turkers.<br><br>
+
+        Completing this task will take about 10 minutes and it is important that you pay close attention during this time so that you do not spoil the task for you and the other participants.<br><br>
+
+        The task has three stages.<br><br>
+    </p>
+    <img src="{% static 'Introduction.jpg' %}"; align="center"/>
+    <p>
+      <br>
+        <b>First</b>, you take a small <b>quiz</b> about the game. <br><br>
+
+        <b>Then</b> you are matched with another m-turker and the game is played.<br><br>
+
+        <b>Finally</b>, you are asked to fill out a short <b>survey.</b><br><br>
+
+        Please solve the captcha below to continue with the study.<br><br>
+    </p>
+
+</div>
+
+{% next_button %}
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 10) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+
+{% endblock %}

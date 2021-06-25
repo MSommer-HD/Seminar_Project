@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% block title %}
+    Test 1
+{% endblock %}
+
+{% block content %}
+<div id="main">
+    <p> On the following pages there will be two questions about the previously explained game.<br>
+        These questions test whether you understood the instructions correctly. <br>
+        The answers you give are not part of the game and will not influence your payout.
+    </p>
+    <br><br>
+</div>
+    {% next_button %}
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 10) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}

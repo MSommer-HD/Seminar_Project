@@ -1,0 +1,40 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+
+
+{% if groupdecision == 0 %}
+    Your team complied and receives a payoff of <b>3 tokens.</b> <br><br>
+    The exchange rate of tokens to US dollar depends on the actions of your team, and the actions of 19 other teams in this experiment. <br>
+    We will inform you about the exchange rate upon payment when we recorded the actions of the other teams.
+{%else%}
+    Your team cheated and receives a payoff of <b>5 tokens.</b> <br><br>
+    The exchange rate of tokens to US dollar depends on the actions of your team, and the actions of 19 other teams in this experiment. <br>
+    We will inform you about the exchange rate upon payment when we recorded the actions of the other teams.
+{% endif %}
+
+<br><br>
+    {% next_button %}
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 10) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+

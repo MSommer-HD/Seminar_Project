@@ -1,0 +1,49 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+{% block title %}
+    Quiz Third Try
+{% endblock %}
+<! This is a html-comment>
+<! The building blocks of our pages are HTML. You can find more info here: https://www.w3schools.com/html/html_intro.asp
+p indicates a text, br is equal to enter and div is the main block >
+
+{% block content %}
+<div id="main">
+        <img src="{% static 'Quiz.PNG' %}"/>
+        <br>
+       You did not select the correct answers in the second round of the quiz. Please try again.
+        <br><br>
+        Please answer the following questions. Make sure to select the correct answers.<br>
+        <b>This is the last attempt to finish the quiz. If you fail, you are not allowed to finish the task.</b>
+        <br><br>
+
+        <b>Question 1:</b> <br>
+
+        {% formfield player.test13 %}
+
+        <b>Question 2:</b> <br>
+
+        {% formfield player.test23 %}
+        <br>
+</div>
+    {% next_button %}
+
+
+
+
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 10) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+{% endblock %}
