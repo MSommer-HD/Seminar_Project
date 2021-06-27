@@ -57,35 +57,18 @@ class Group(BaseGroup):
                     self.groupdecision = 0
 
 
-    def set_payoffs(self):
 
-
-        if sum([p.alone for p in self.get_players()]) > 0:
-                self.total_points_given = sum([p.give for p in self.get_players()]) + self.otherplayer1_give + self.otherplayer2_give
-                self.resource_share = np.round(self.total_points_given * Constants.efficiency_factor / Constants.players_per_group, 0)
-        else:
-                self.total_points_given =  sum([p.give for p in self.get_players()])
-                self.resource_share = np.round(self.total_points_given * Constants.efficiency_factor / Constants.players_per_group, 0)
-
-        if self.breakdown == True:
-            for p in self.get_players():
-                p.payoff = (Constants.max - p.give)
-        else:
-            for p in self.get_players():
-                p.payoff = sum([+ (Constants.max - p.give),
-                                + self.resource_share,
-                                ])
 
     worker_decision = models.IntegerField(choices=[[0,'Comply'],[1,'Cheat']], initial= 0, widget=widgets.RadioSelect() , label="What do you choose?",blank=True)
-    manager_decision = models.IntegerField(choices=[[0,'Comply'],[1,'Cheat']], initial= 0, widget=widgets.RadioSelect() , label="What do you choose?")
-    worker_feedback = models.IntegerField(choices=[[0,'I like your choice'],[1,"I don't like your choice"],[3,"send no message"]],
+    manager_decision = models.IntegerField(choices=[[0,'Comply'],[1,'Cheat']], widget=widgets.RadioSelect() , label="What do you choose?")
+    worker_feedback = models.IntegerField(choices=[[0,'I like your choice'],[1,"I don't like your choice"],[3,"send no message"]],initial=0,
                                           widget=widgets.RadioSelect() , label="Which feedback do you, as worker, want to send to the manager?",blank=True)
     worker_veto = models.IntegerField(choices=[[0,'no (team will cheat)'], [1,'yes (team will comply and $0.10 are deducted from your payoff)']],
-                                          widget=widgets.RadioSelect(), label="Do you want to veto the decision of the manager", blank=True)
+                                          widget=widgets.RadioSelect(),initial=0, label="Do you want to veto the decision of the manager", blank=True)
 class Player(BasePlayer):
 
 
-    worker_decision = models.IntegerField(choices=[[0,'Comply'],[1,'cheat']], initial= 0, widget=widgets.RadioSelect() , label="What do you choose?",blank=True)
+
 
     def role(self):
         if self.id_in_group == 1:
@@ -93,8 +76,6 @@ class Player(BasePlayer):
         if self.id_in_group == 2:
             return 'Worker'
 
-    timeout_give = models.BooleanField(initial=False)
-    timeout_questions = models.BooleanField(initial=False)
 
 
     #question1 = models.IntegerField(widget=widgets.Slider, min=0, max=100,  label="")
