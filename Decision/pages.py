@@ -7,13 +7,11 @@ import time
 class Grouping(WaitPage):
     group_by_arrival_time = True
 
-    body_text = "Waiting for two other participants to begin the real task.\
-      This wait should be fairly short, though in some cases it could last a couple of minutes (max 3 min)."
+    body_text = "Waiting for one other participants to begin the real task.\
+      This wait should be fairly short, though in some cases it could last a couple of minutes (max 5 min)."
 
     def before_next_page(self):
         self.player.role()
-        if self.timeout_happened:
-            self.player.timeout_give = True
 
 class Manager(Page):
 
@@ -27,11 +25,9 @@ class Manager(Page):
         return {'treatment1': self.session.vars['treatment1'],
                 'treatment2': self.session.vars['treatment2']}
 
-    timeout_seconds = 120
 
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.player.timeout_give = True
+
+
 
 class ManagerFeedback(Page):
 
@@ -46,11 +42,9 @@ class ManagerFeedback(Page):
                 'wfeedback':self.group.worker_feedback,
                 'wveto':self.group.worker_veto}
 
-    timeout_seconds = 120
 
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.player.timeout_give = True
+
+
 
 class Worker(Page):
     def is_displayed(self):
@@ -65,11 +59,9 @@ class Worker(Page):
                 'treatment2': self.session.vars['treatment2'],
                 'id': self.player.id_in_group}
 
-    timeout_seconds = 120
 
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.player.timeout_give = True
+
+
 
 class WorkerFeedback(Page):
     def is_displayed(self):
@@ -85,12 +77,10 @@ class WorkerFeedback(Page):
                 'wfeedback':self.group.worker_feedback,
                 'wveto':self.group.worker_veto}
 
-    timeout_seconds = 120
 
     def before_next_page(self):
         self.group.set_groupdecision()
-        if self.timeout_happened:
-            self.player.timeout_give = True
+
 
 class Wait1(WaitPage):
     body_text = "Please wait while we match your action to your co-player’s action."
@@ -107,11 +97,10 @@ class Questions(Page):
     form_model = 'player'
     form_fields = ['question3','question4','question5','question6',]
 
-    timeout_seconds = 240
 
-    def before_next_page(self):
-        if self.timeout_happened:
-            self.player.timeout_questions = True
+
+
+
 
 
 

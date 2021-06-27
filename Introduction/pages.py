@@ -15,8 +15,8 @@ class Comp1(Page):
 
     def before_next_page(self):
         self.player.set_comp1()
-        if self.timeout_happened:
-            self.player.timeout_test1 = True
+
+
 
 
 class Comp2(Page):
@@ -30,8 +30,6 @@ class Comp2(Page):
 
     def before_next_page(self):
         self.player.set_comp2()
-        if self.timeout_happened:
-            self.player.timeout_test1 = True
 
 class Comp3(Page):
 
@@ -45,8 +43,7 @@ class Comp3(Page):
 
     def before_next_page(self):
         self.player.set_comp3()
-        if self.timeout_happened:
-            self.player.timeout_test1 = True
+
 
 class Comp3Fail(Page):
     def is_displayed(self):

@@ -52,9 +52,9 @@ class Player(BasePlayer):
 
 
     test1 = models.IntegerField(choices=[[0,'False'],[1,'True']], widget=widgets.RadioSelect() , label="Text for Question 1")
-    test2 = models.IntegerField(choices=[[0,'False'],[1,'True']], widget=widgets.RadioSelect() , label="Text for Question 2")
+    test2 = models.IntegerField(choices=[[0,'False'],[1,'True']],widget=widgets.RadioSelect() , label="Text for Question 2")
     test12 = models.IntegerField(choices=[[0,'False'],[1,'True']], widget=widgets.RadioSelect() , label="Text for Question 1")
-    test22 = models.IntegerField(choices=[[0,'False'],[1,'True']], widget=widgets.RadioSelect() , label="Text for Question 2")
+    test22 = models.IntegerField(choices=[[0,'False'],[1,'True']],widget=widgets.RadioSelect() , label="Text for Question 2")
     test13 = models.IntegerField(choices=[[0,'False'],[1,'True']], widget=widgets.RadioSelect() , label="Text for Question 1")
     test23 = models.IntegerField(choices=[[0,'False'],[1,'True']], widget=widgets.RadioSelect() , label="Text for Question 2")
     comp1 = models.IntegerField()
@@ -64,14 +64,20 @@ class Player(BasePlayer):
     def set_comp1(self):
         if self.test1 == 1 and self.test2 == 1:
             self.comp1 = 1
+            self.comp2 = 1
+            self.comp3 = 1
         else:
             self.comp1 = 0
+            self.comp2 = 0
+            self.comp3 = 0
 
     def set_comp2(self):
         if self.test12 == 1 and self.test22 == 1:
             self.comp2 = 1
+            self.comp2 = 1
         else:
             self.comp2 = 0
+            self.comp3 = 0
 
     def set_comp3(self):
         if self.test13 == 1 and self.test23 == 1:
