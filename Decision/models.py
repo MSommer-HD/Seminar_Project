@@ -97,8 +97,8 @@ class Player(BasePlayer):
     timeout_questions = models.BooleanField(initial=False)
 
 
-    question1 = models.IntegerField(widget=widgets.Slider, min=0, max=19, initial=0, label="")
-    question2 = models.IntegerField(widget=widgets.Slider, min=0, max=100, initial=0, label="")
+    #question1 = models.IntegerField(widget=widgets.Slider, min=0, max=100,  label="")
+    #question2 = models.IntegerField(widget=widgets.Slider, min=0, max=100,  label="")
     question3 = models.IntegerField(choices=[[0,'to comply'],[1,'to cheat']], widget=widgets.RadioSelect() , label="In your own opinion - what is the morally right thing:?")
     question4 = models.IntegerField(min=14, max=120, label="What is your age?")
     question5 = models.IntegerField(choices=["Male","Famale","Other","Prefer not to tell"],

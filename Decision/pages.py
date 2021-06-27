@@ -105,7 +105,7 @@ class Results(Page):
 class Questions(Page):
 
     form_model = 'player'
-    form_fields = ['question1','question2','question3','question4','question5','question6','question8']
+    form_fields = ['question3','question4','question5','question6','question8']
 
     timeout_seconds = 240
 
