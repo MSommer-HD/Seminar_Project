@@ -74,7 +74,7 @@ class Player(BasePlayer):
     def set_comp2(self):
         if self.test12 == 1 and self.test22 == 1:
             self.comp2 = 1
-            self.comp2 = 1
+            self.comp3= 1
         else:
             self.comp2 = 0
             self.comp3 = 0
