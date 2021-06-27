@@ -107,4 +107,4 @@ class Player(BasePlayer):
                                              "Some college, but no degree","Associate degree","Bachelor degree","Graduate degree"],
                                     widget=widgets.RadioSelect(), label="What is the highest level of school you have completed or the highest degree you have received?")
 
-    question8 = models.IntegerField(widget=widgets.Slider, min=0, max=10, initial=0, label="")
+    #question8 = models.IntegerField(widget=widgets.Slider, min=0, max=10, initial=0, label="")
