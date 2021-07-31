@@ -8,46 +8,47 @@
 {% block content %}
     <div id="main">
                     <img src="{% static 'Game.PNG' %}"; align="center"/><br><br>
-                    Here is what you, as manager, chose for your team:<br>
+                    Here is what you, as manager, chose for your team:<br><br>
                     {% if mdecision == 0 %}
-                    <b> -	Comply</b>
+                         <b>•	Comply</b><br>
+                            {% if treatment1 == 0 %}
+                            This means your teams complies.<br><br>
+                            {% endif %}
                     {%else%}
-                    <b> -	Cheat</b>
+                        <b>•	Cheat</b><br><br>
+                            {% if treatment1 == 0 %}
+                            This means your teams cheats.<br><br>
+                            {% endif %}
                     {% endif %}
-                    <br><br>
+
 
                     {% if treatment1 == 0 %}
                        {% if treatment2 == 1 %}
                             Here is the feedback that the worker sent to you:<br>
                             {% if wfeedback == 0 %}
                                 "I like your choice"
-                            {% endif %}
-                            {% if wfeedback == 1 %}
+                            {% elif wfeedback == 1 %}
                                 "I don't like your choice"
-                            {% endif %}
-                            {% if wfeedback == 2 %}
+                            {% else %}
                                 no message
                             {% endif %}
-                        {% endif %}
+                       {% endif %}
                     {%else%}
                         {% if treatment2 == 0 %}
                             {% if wveto == 0 %}
-                            The worker did not veto your decision, your team {% if mdecision == 0 %}complies.{% endif %}{% if mdecision == 1 %}cheats.{% endif %}
+                            The worker did not veto your decision, your team {% if mdecision == 0 %}complies.{% endif %}{% if mdecision == 1 %}cheats.{% endif %}<br><br>
                             {% endif %}
                             {% if wveto == 1 %}
-                            The worker vetoed your decision, your team complies and $0.10 are deducted from your payoff.
+                            The worker vetoed your decision, therefore your team complies.<br><br>
                             {% endif %}
-                            <br><br>
 
 
                             Here is the feedback that the worker sent to you:<br>
                             {% if wfeedback == 0 %}
                                 "I like your choice"
-                            {% endif %}
-                            {% if wfeedback == 1 %}
+                            {% elif wfeedback == 1 %}
                                 "I don't like your choice"
-                            {% endif %}
-                            {% if wfeedback == 2 %}
+                            {% else %}
                                 no message
                             {% endif %}
 
@@ -55,17 +56,16 @@
                             {% if mdecision == wdecision %}
                             The worker chose the same action as you; your team {% if mdecision == 0 %}complies.{% endif %}{% if mdecision == 1 %}cheats.{% endif %}
                             {% else %}
-                            The worker did not choose the same action as you; your team complies and $0.10 are deducted from your payoff.
+                            The worker did not choose the same action as you, therefore your team complies.
                             {% endif %}
-                            <br><br>
+                                <br><br>
                             Here is the feedback that the worker sent to you:<br>
+
                             {% if wfeedback == 0 %}
                                 "I like your choice"
-                            {% endif %}
-                            {% if wfeedback == 1 %}
+                            {% elif wfeedback == 1 %}
                                 "I don't like your choice"
-                            {% endif %}
-                            {% if wfeedback == 2 %}
+                            {% else %}
                                 no message
                             {% endif %}
                         {% endif %}

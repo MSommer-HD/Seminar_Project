@@ -8,13 +8,19 @@
 {% block content %}
 <div id="main">
                     <img src="{% static 'Game.PNG' %}"; align="center"/><br><br>
-                    Here is what the manager chose for your team:<br>
+                    Here is what the manager chose for your team:<br><br>
                     {% if mdecision == 0 %}
-                        <b> -	Comply</b>
+                         <b>•	Comply</b><br>
+                            {% if treatment1 == 0 %}
+                            This means your teams complies.<br><br>
+                            {% endif %}
                     {%else%}
-                        <b> -	Cheat</b>
+                        <b>•	Cheat</b><br><br>
+                            {% if treatment1 == 0 %}
+                            This means your teams cheats.<br><br>
+                            {% endif %}
                     {% endif %}
-                    <br>
+
 
                     {% if treatment1 == 0 %}
                         {% if treatment2 == 0 %}

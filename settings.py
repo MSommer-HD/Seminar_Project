@@ -40,12 +40,6 @@ mturk_hit_settings = {
 }
 #############################################
 
-
-
-################################################################
-#Only touch real_world_currency per point in alignment with us
-################################################################
-
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
 # in SESSION_CONFIGS, except those that explicitly override it.
 # the session config can be accessed from methods in your apps as self.session.config,
@@ -53,8 +47,8 @@ mturk_hit_settings = {
 
 
 SESSION_CONFIG_DEFAULTS= {
-    "real_world_currency_per_point": 0.12,
-    'participation_fee': 1.00,
+    "real_world_currency_per_point": 0.001,
+    'participation_fee': 2.00,
      'doc': "",
     "mturk_hit_settings": mturk_hit_settings
 }
@@ -67,24 +61,24 @@ SESSION_CONFIG_DEFAULTS= {
 SESSION_CONFIGS = [
     dict(name='observe',
         display_name="observe",
-        num_demo_participants=4,
-        app_sequence=['Introduction','Decision'],
-        treatment1 = False,
-        treatment2 = False
+        num_demo_participants=2,
+        app_sequence=['Game'],
+        treatment1 = 0,
+        treatment2 = 0
 
     ),
     dict(name='voice',
          display_name="voice",
          num_demo_participants=2,
-         app_sequence=['Introduction','Decision'],
-         treatment1=False,
-         treatment2=True
+         app_sequence=['Game'],
+         treatment1=0,
+         treatment2=1
 
          ),
     dict(name='veto',
          display_name="veto",
          num_demo_participants=2,
-         app_sequence=['Introduction','Decision'],
+         app_sequence=['Game'],
          treatment1=True,
          treatment2=False
 
@@ -92,7 +86,7 @@ SESSION_CONFIGS = [
     dict(name='symmetry',
          display_name="symmetry",
          num_demo_participants=2,
-         app_sequence=['Introduction','Decision'],
+         app_sequence=['Game'],
          treatment1=True,
          treatment2=True
 
@@ -104,14 +98,14 @@ SESSION_CONFIGS = [
 
 
 #############################################
-###########  DO NOT TOUCH ###################
+###########  Otree Settings #################
 #############################################
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
+REAL_WORLD_CURRENCY_CODE = 'EUR'
 USE_POINTS = True
 
 ROOMS = []
