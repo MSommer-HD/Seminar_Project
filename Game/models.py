@@ -116,9 +116,9 @@ class Group(BaseGroup):
     worker_decision = models.IntegerField(choices=[[0,'Comply'],[1,'Cheat']],initial = 0, widget=widgets.RadioSelect() , label="What do you choose?",blank=True)
     manager_decision = models.IntegerField(choices=[[0,'Comply'],[1,'Cheat']], initial = 0, widget=widgets.RadioSelect() , label="What do you choose?")
     worker_feedback = models.IntegerField(choices=[[0,'I like your choice'],[1,"I don't like your choice"],[3,"send no message"]],
-                                          widget=widgets.RadioSelect() , label="Which feedback do you, as worker, want to send to the manager?",blank=True)
+                                          initial = 2,widget=widgets.RadioSelect() , label="Which feedback do you, as worker, want to send to the manager?",blank=True)
     worker_veto = models.IntegerField(choices=[[0,'no (team will cheat)'], [1,'yes (team will comply and €0.20 are deducted from your payoff)']],
-                                          widget=widgets.RadioSelect(), label="Do you want to veto the decision of the manager", blank=True)
+                                          initial = 0,widget=widgets.RadioSelect(), label="Do you want to veto the decision of the manager", blank=True)
 
     def set_payoffs(self):
         for p in self.get_players():
